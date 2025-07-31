@@ -4,6 +4,7 @@ import { EmpiricaMenu, EmpiricaParticipant } from "@empirica/core/player/react";
 import React from "react";
 import { Game } from "./Game";
 import { ExitSurvey } from "./intro-exit/ExitSurvey";
+import { CompCheck } from "./intro-exit/CompCheck";
 import { Introduction } from "./intro-exit/Introduction";
 
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
   const url = `${protocol}//${host}/query`;
 
   function introSteps({ game, player }) {
-    return [Introduction];
+    return [Introduction, CompCheck];
   }
 
   function exitSteps({ game, player }) {

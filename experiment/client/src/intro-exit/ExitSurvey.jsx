@@ -38,13 +38,20 @@ export function ExitSurvey({ next }) {
     <div className="py-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <Alert title="Bonus">
         <p>
-        You and your partner agreed on {player.get("bonus")} out of 8 questions.  
+        { player.get("ended") == "game ended"
+          ? 'You and your partner agreed on {player.get("bonus")} out of 8 questions.'
+          : player.get("ended") == "failed comprehension check"
+          ? "You did not pass the comprehension check. You will be compensated for your time."
+          : null
+        }
         </p>
         <p>
           {
-            player.get("bonus") >= 6
+            player.get("ended") == "game ended" 
+            ? player.get("bonus") >= 6
               ? "You have earned the additional £1.00.  Please submit the following code to receive your bonus: " + player.id
               : "You have not earned the additional £1.00."
+            : null
           }
         </p>
       </Alert>
