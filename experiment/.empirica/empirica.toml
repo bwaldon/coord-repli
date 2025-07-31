@@ -1,0 +1,9 @@
+name = "interp_coordination"
+
+[tajriba.auth]
+srtoken = "EduXKMTAmFQKeeni"
+
+[[tajriba.auth.users]]
+name = "Admin"
+username = "admin"
+password = "FJKfZhHZ"

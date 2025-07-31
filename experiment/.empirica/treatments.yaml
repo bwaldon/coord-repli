@@ -1,0 +1,17 @@
+factors:
+    - name: useChat
+      values:
+        - value: "yes"
+        - value: "no"
+    - name: playerCount
+      values:
+        - value: 2
+treatments:
+    - name: chat
+      factors:
+        playerCount: 2
+        useChat: "yes"
+    - name: nochat
+      factors:
+        playerCount: 2
+        useChat: "no"
