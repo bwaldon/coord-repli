@@ -7,16 +7,19 @@ factors:
       values:
         - value: 2
         - value: 1
+    - name: block
+      values:
+        - value: 1
+        - value: 2
+        - value: 3
+        - value: 4
+        - value: 5
+        - value: 6
+        - value: 7
+        - value: 8
 treatments:
-    - name: chat
+    - name: block1_oneplayer
       factors:
-        playerCount: 2
-        useChat: "yes"
-    - name: nochat
-      factors:
-        playerCount: 2
-        useChat: "no"
-    - name: single
-      factors:
+        block: 1
         playerCount: 1
         useChat: "no"
