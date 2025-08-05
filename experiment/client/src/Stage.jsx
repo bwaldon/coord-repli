@@ -1,7 +1,6 @@
 import {
   usePlayer,
-  usePlayers,
-  useRound,
+  useGame
 } from "@empirica/core/player/classic/react";
 import { Loading } from "@empirica/core/player/react";
 import React from "react";
@@ -9,10 +8,11 @@ import { Interp } from "./components/Interp";
 
 export function Stage() {
   const player = usePlayer();
-  const players = usePlayers();
+  const game = useGame();
+  const treatment = game.get("treatment")
 
   if (player.stage.get("submit")) {
-    if (players.length === 1) {
+    if (treatment.playerCount == 1) {
       return <Loading />;
     }
 

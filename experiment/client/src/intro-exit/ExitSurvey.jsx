@@ -1,14 +1,15 @@
-import { usePlayer } from "@empirica/core/player/classic/react";
+import { usePlayer, useGame } from "@empirica/core/player/classic/react";
 import React, { useState } from "react";
 import { Alert } from "../components/Alert";
 import { Button } from "../components/Button";
-import { Game } from "../Game.jsx";
 
 export function ExitSurvey({ next }) {
   const labelClassName = "block text-sm font-medium text-gray-700 my-2";
   const inputClassName =
     "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-empirica-500 focus:border-empirica-500 sm:text-sm";
   const player = usePlayer();
+  const game = useGame();
+  const treatment = game.get("treatment");
 
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
@@ -36,18 +37,18 @@ export function ExitSurvey({ next }) {
 
   return (
     <div className="py-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Alert title="Bonus">
+      <Alert title="Payment Information">
         <p>
-        { player.get("ended") == "game ended"
+        { treatment.playerCount == 2 && player.get("ended") == "game ended"
           ? 'You and your partner agreed on {player.get("bonus")} out of 8 questions.'
           : player.get("ended") == "failed comprehension check"
           ? "You did not pass the comprehension check. You will be compensated for your time."
-          : null
+          : "You will be compensated for your time at the posted rate."
         }
         </p>
         <p>
           {
-            player.get("ended") == "game ended" 
+            treatment.playerCount == 2 && player.get("ended") == "game ended"
             ? player.get("bonus") >= 6
               ? "You have earned the additional £1.00.  Please submit the following code to receive your bonus: " + player.id
               : "You have not earned the additional £1.00."

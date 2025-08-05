@@ -6,6 +6,7 @@ factors:
     - name: playerCount
       values:
         - value: 2
+        - value: 1
 treatments:
     - name: chat
       factors:
@@ -14,4 +15,8 @@ treatments:
     - name: nochat
       factors:
         playerCount: 2
+        useChat: "no"
+    - name: single
+      factors:
+        playerCount: 1
         useChat: "no"

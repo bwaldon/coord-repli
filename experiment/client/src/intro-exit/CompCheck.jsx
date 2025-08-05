@@ -1,10 +1,11 @@
-import { usePlayer } from "@empirica/core/player/classic/react";
+import { usePlayer, useGame } from "@empirica/core/player/classic/react";
 import React, { useState } from "react";
 import { Button } from "../components/Button";
 
 export function CompCheck({ next }) {
   const player = usePlayer();
-
+  const game = useGame();
+  const treatment = game.get("treatment")
   const [comp, setComp] = useState("");
 
   function handleSubmit(event) {
@@ -16,7 +17,7 @@ export function CompCheck({ next }) {
     player.set("compCheck", {
       comp
     });
-    if (comp === "second") {
+    if ((treatment.playerCount == 2 && comp === "second") || (treatment.playerCount == 1 && comp === "opinion")) {
       next();
     } else {
       player.set("ended", "failed comprehension check");
