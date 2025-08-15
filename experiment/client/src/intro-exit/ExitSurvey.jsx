@@ -40,7 +40,7 @@ export function ExitSurvey({ next }) {
       <Alert title="Payment Information">
         <p>
         { treatment.playerCount == 2 && player.get("ended") == "game ended"
-          ? 'You and your partner agreed on {player.get("bonus")} out of 8 questions.'
+          ? `You and your partner agreed on ${player.get("bonus")} out of 8 questions.`
           : player.get("ended") == "failed comprehension check"
           ? "You did not pass the comprehension check. You will be compensated for your time."
           : "You will be compensated for your time at the posted rate."
