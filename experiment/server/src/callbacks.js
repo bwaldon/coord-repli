@@ -18,7 +18,8 @@ Empirica.onGameStart(({ game }) => {
   shuffledStims.forEach((trial, index) => {
     const round = game.addRound({
       idx: index + 1,
-      name: trial.scenario,
+      scenario: trial.scenario,
+      condition: trial.condition,
       context: trial.header,
       action: trial.continuation,
       question: `Did ${trial.name} break the rule?`,
