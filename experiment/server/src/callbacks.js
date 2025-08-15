@@ -48,7 +48,7 @@ Empirica.onGameEnded(({ game }) => {});
 function calculateBonus(round) {
   let playerAnswers = [];
   round.currentGame.players.forEach((player) => {
-      playerAnswers.push(player.round.get("answer"));
+      playerAnswers.push(player.round.get("resp"));
   });
   if (playerAnswers[0] === playerAnswers[1]) {
       round.currentGame.players.forEach((player) => {
