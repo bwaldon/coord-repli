@@ -23,3 +23,78 @@ treatments:
         block: 1
         playerCount: 1
         useChat: "no"
+    - name: block2_oneplayer
+      factors:
+        block: 2
+        playerCount: 1
+        useChat: "no"
+    - name: block3_oneplayer
+      factors:
+        block: 3
+        playerCount: 1
+        useChat: "no"
+    - name: block4_oneplayer
+      factors:
+        block: 4
+        playerCount: 1
+        useChat: "no"
+    - name: block5_oneplayer
+      factors:
+        block: 5
+        playerCount: 1
+        useChat: "no"
+    - name: block6_oneplayer
+      factors:
+        block: 6
+        playerCount: 1
+        useChat: "no"
+    - name: block7_oneplayer
+      factors:
+        block: 7
+        playerCount: 1
+        useChat: "no"
+    - name: block8_oneplayer
+      factors:
+        block: 8
+        playerCount: 1
+        useChat: "no"
+    - name: block1_twoplayer
+      factors:
+        block: 1
+        playerCount: 2
+        useChat: "no"
+    - name: block2_twoplayer
+      factors:
+        block: 2
+        playerCount: 2
+        useChat: "no"
+    - name: block3_twoplayer
+      factors:
+        block: 3
+        playerCount: 2
+        useChat: "no"
+    - name: block4_twoplayer
+      factors:
+        block: 4
+        playerCount: 2
+        useChat: "no"
+    - name: block5_twoplayer
+      factors:
+        block: 5
+        playerCount: 2
+        useChat: "no"
+    - name: block6_twoplayer
+      factors:
+        block: 6
+        playerCount: 2
+        useChat: "no"
+    - name: block7_twoplayer
+      factors:
+        block: 7
+        playerCount: 2
+        useChat: "no"
+    - name: block8_twoplayer
+      factors:
+        block: 8
+        playerCount: 2
+        useChat: "no"
