@@ -1,0 +1,8 @@
+*.DS_Store
+.venv/
+extract_stims/study_materials.pdf
+upload.sh
+interp_coordination.tar.zst
+experiment/interp_coordination*.zip
+experiment/interp_coordination*/
+*.Rhistory
