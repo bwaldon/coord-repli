@@ -13,9 +13,11 @@ Empirica.onGameStart(({ game }) => {
 
   const duration = 120;
 
+  game.set("length", shuffledStims.length);
+
   shuffledStims.forEach((trial, index) => {
     const round = game.addRound({
-      idx: index,
+      idx: index + 1,
       name: trial.scenario,
       context: trial.header,
       action: trial.continuation,
