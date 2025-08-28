@@ -7,6 +7,7 @@ import { ExitSurvey } from "./intro-exit/ExitSurvey";
 import { CompCheck } from "./intro-exit/CompCheck";
 import { Introduction } from "./intro-exit/Introduction";
 import { MyConsent } from "./MyConsent.jsx";
+import { MyPlayerForm } from "./MyPlayerForm.tsx";
 
 export default function App() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -28,7 +29,7 @@ export default function App() {
       <div className="h-screen relative">
         <EmpiricaMenu position="bottom-left" />
         <div className="h-full overflow-auto">
-          <EmpiricaContext consent={MyConsent} introSteps={introSteps} exitSteps={exitSteps}>
+          <EmpiricaContext playerCreate={MyPlayerForm} consent={MyConsent} introSteps={introSteps} exitSteps={exitSteps}>
             <Game />
           </EmpiricaContext>
         </div>
