@@ -35,15 +35,17 @@ export function ExitSurvey({ next }) {
     setEducation(e.target.value);
   }
 
+  if (player.get("ended") == "failed comprehension check") {
+    next();
+  }
+
   return (
     <div className="py-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <Alert title="Payment Information">
         <p>
         { treatment.playerCount == 2 && player.get("ended") == "game ended"
           ? `You and your partner agreed on ${player.get("bonus")} out of 8 questions.`
-          : player.get("ended") == "failed comprehension check"
-          ? "You did not pass the comprehension check. You will be compensated for your time."
-          : "You will be compensated for your time at the posted rate."
+          : null
         }
         </p>
         <p>
