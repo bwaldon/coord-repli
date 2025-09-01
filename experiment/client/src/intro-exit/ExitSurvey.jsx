@@ -18,6 +18,9 @@ export function ExitSurvey({ next }) {
   const [feedback, setFeedback] = useState("");
   const [education, setEducation] = useState("");
 
+  const bonus = player.get("bonus", 0);
+  const bonusNumber = parseInt(String(bonus ?? 0));
+
   function handleSubmit(event) {
     event.preventDefault();
     player.set("exitSurvey", {
@@ -44,15 +47,15 @@ export function ExitSurvey({ next }) {
       <Alert title="Payment Information">
         <p>
         { treatment.playerCount == 2 && player.get("ended") == "game ended"
-          ? `You and your partner agreed on ${player.get("bonus")} out of 8 questions.`
+          ? `You and your partner agreed on ${bonusNumber} out of 8 questions.`
           : "You will be paid at the posted rate."
         }
         </p>
         <p>
           {
             treatment.playerCount == 2 && player.get("ended") == "game ended"
-            ? player.get("bonus") >= 6
-              ? "You have earned the additional £1.00.  Please submit the following code to receive your bonus: " + player.id
+            ? bonusNumber >= 6
+              ? "You have earned the additional £1.00."
               : "You have not earned the additional £1.00."
             : null
           }
