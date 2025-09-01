@@ -45,7 +45,7 @@ export function ExitSurvey({ next }) {
         <p>
         { treatment.playerCount == 2 && player.get("ended") == "game ended"
           ? `You and your partner agreed on ${player.get("bonus")} out of 8 questions.`
-          : null
+          : "You will be paid at the posted rate."
         }
         </p>
         <p>
