@@ -33,14 +33,31 @@ Empirica.onGameStart(({ game }) => {
 
 });
 
-Empirica.onRoundStart(({ round }) => {});
+Empirica.onRoundStart(({ round }) => {
+  // set default responses
+  round.currentGame.players.forEach((player) => {
+    player.round.set("resp", null);
+  });
+});
 
 Empirica.onStageStart(({ stage }) => {});
 
 Empirica.onStageEnded(({ stage }) => {});
 
 Empirica.onRoundEnded(({ round }) => {
-  calculateBonus(round);
+  const responsivePlayers = round.currentGame.players.filter((player) => player.round.get("resp") !== null);
+  const unresponsivePlayers = round.currentGame.players.filter((player) => player.round.get("resp") === null);
+  if (unresponsivePlayers.length > 0) {
+    responsivePlayers.forEach((player) => {
+    player.set("exitReason", "partner failed to answer");
+  });
+  unresponsivePlayers.forEach((player) => {
+    player.set("exitReason", "failed to answer");
+  });
+  round.currentGame.end("ended", "player failed to answer")
+} else {
+    calculateBonus(round);
+}
 });
 
 Empirica.onGameEnded(({ game }) => {});
@@ -50,7 +67,7 @@ function calculateBonus(round) {
   round.currentGame.players.forEach((player) => {
       playerAnswers.push(player.round.get("resp"));
   });
-  if (playerAnswers[0] === playerAnswers[1]) {
+  if (playerAnswers[0] === playerAnswers[1] && playerAnswers[0] !== null) {
       round.currentGame.players.forEach((player) => {
           player.set("bonus", player.get("bonus") + 1);
       });

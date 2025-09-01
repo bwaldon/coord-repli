@@ -26,6 +26,10 @@ export function Introduction({ next }) {
           : null
         }
         </p>
+        <br></br>
+        <p>
+        <b>IMPORTANT:</b> You must provide an answer to each question before the timer runs out. If you fail to do so, you will not receive a completion code and you will be asked to return the study.
+        </p>
       </div>
       <Button handleClick={next} autoFocus>
         <p>Next</p>
