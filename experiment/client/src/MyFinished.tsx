@@ -18,7 +18,7 @@ export function MyFinished() {
         ? <><h2 className="font-medium text-gray-700">You failed the comprehension check.</h2><p className="mt-2 text-justify">Please <b>return this study</b> and message the study administrator with the text <i>COMPCHECK</i> to receive partial compensation (£0.15) in the form of a bonus payment.</p></>
         : player.get("exitReason") === "failed to answer"
         ? <><h2 className="font-medium text-gray-700">You timed out.</h2><p className="mt-2 text-justify">Please <b>return this study</b> and message the study administrator with the text <i>TIMEOUT</i> to receive partial compensation (£0.20) in the form of a bonus payment.</p></>
-        : player.get("ended") == "game ended" || player.get("exitReason") == "partner failed to answer"
+        : player.get("ended") == "game ended" || player.get("exitReason") == "partner failed to answer" || player.get("ended") == "game failed"
         ? <><h2 className="font-medium text-gray-700">Finished!</h2><p className="mt-2 text-justify">Thank you for participating. {earnedBonus ? "You have earned the bonus." : "You will be paid at the posted rate."} </p> <h2 className="font-medium text-gray-700">Your completion code: { code } </h2></>
         : ""
       }

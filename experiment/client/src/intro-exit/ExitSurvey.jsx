@@ -46,7 +46,7 @@ export function ExitSurvey({ next }) {
     <div className="py-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <Alert title="Payment Information">
         <p>
-        { treatment.playerCount == 2 && !(player.get("exitReason"))
+        { treatment.playerCount == 2 && !(player.get("exitReason")) && !(player.get("ended") == "game failed")
           ? `You and your partner agreed on ${bonusNumber} out of 8 questions.`
           : player.get("exitReason") == "partner failed to answer"
           ? "Your partner timed out. You will be paid at the posted rate."
@@ -55,7 +55,7 @@ export function ExitSurvey({ next }) {
         </p>
         <p>
           {
-            treatment.playerCount == 2 && !(player.get("exitReason"))
+            treatment.playerCount == 2 && !(player.get("exitReason")) && !(player.get("ended") == "game failed")
             ? bonusNumber >= 6
               ? "You have earned the additional £1.00."
               : "You have not earned the additional £1.00."
