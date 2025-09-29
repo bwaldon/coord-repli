@@ -11,7 +11,18 @@ Empirica.onGameStart(({ game }) => {
   // Shuffle the filtered stimuli
   const shuffledStims = _.shuffle(filteredStims);
 
-  const duration = 120;
+  // If it's the clickthrough treatment, repeat the stimuli to create a longer game
+  if (game.get("treatment").clickthrough === "Yes") {
+    const repetitions = 5; // Number of times to repeat the stimuli
+    let extendedStims = [];
+    for (let i = 0; i < repetitions; i++) {
+      extendedStims = extendedStims.concat(_.shuffle(filteredStims));
+    }
+    // Use the extended stimuli for the game
+    shuffledStims.splice(0, shuffledStims.length, ...extendedStims);
+  }
+
+  const duration = game.get('treatment').clickthrough === "Yes" ? 999 : 120; // seconds
 
   game.set("length", shuffledStims.length);
 

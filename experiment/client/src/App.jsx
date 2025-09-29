@@ -11,6 +11,9 @@ import { MyPlayerForm } from "./MyPlayerForm.tsx";
 import { MyFinished } from "./MyFinished.tsx";
 import { myNoGames } from "./myNoGames.tsx";
 import { myLobby } from "./myLobby.tsx";
+import { Introduction_clickthrough } from "./load-test/Intro-clickthrough.jsx";
+import { ExitSurvey_clickthrough } from "./load-test/ExitSurvey-clickthrough.jsx";
+import { MyFinished_clickthrough } from "./load-test/Finished-clickthrough.jsx";
 
 export default function App() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -19,12 +22,15 @@ export default function App() {
   const { protocol, host } = window.location;
   const url = `${protocol}//${host}/query`;
 
+  const isClickthrough = new URLSearchParams(window.location.search).get("isClickthrough", "false") === "true";
+  const finished = isClickthrough ? MyFinished_clickthrough : MyFinished;
+
   function introSteps({ game, player }) {
-    return [Introduction, CompCheck];
+    return isClickthrough ? [Introduction_clickthrough] : [Introduction, CompCheck];
   }
 
   function exitSteps({ game, player }) {
-    return [ExitSurvey];
+    return isClickthrough ? [ExitSurvey_clickthrough] : [ExitSurvey];
   }
 
   return (
@@ -32,7 +38,7 @@ export default function App() {
       <div className="h-screen relative">
         <EmpiricaMenu position="bottom-left" />
         <div className="h-full overflow-auto">
-          <EmpiricaContext playerCreate={MyPlayerForm} consent={MyConsent} introSteps={introSteps} exitSteps={exitSteps} finished={MyFinished} noGames={myNoGames} lobby={myLobby}>
+          <EmpiricaContext playerCreate={MyPlayerForm} consent={MyConsent} introSteps={introSteps} exitSteps={exitSteps} finished={finished} noGames={myNoGames} lobby={myLobby}>
             <Game />
           </EmpiricaContext>
         </div>

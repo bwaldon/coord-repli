@@ -5,6 +5,7 @@ import {
 import { Loading } from "@empirica/core/player/react";
 import React from "react";
 import { Interp } from "./components/Interp";
+import { Interp_clickthrough } from "./load-test/Interp-clickthrough.jsx";
 
 export function Stage() {
   const player = usePlayer();
@@ -23,6 +24,11 @@ export function Stage() {
     );
   }
 
+  if (treatment.clickthrough === "Yes") {
+    return (
+      <Interp_clickthrough />
+    )
+  } 
   return (
     <Interp />
   )

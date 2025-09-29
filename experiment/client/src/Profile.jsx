@@ -16,7 +16,7 @@ export function Profile() {
         </div>
       </div>
 
-      <Timer />
+      {game.get("treatment").clickthrough === "Yes" ? <div></div>  : <Timer />}
 
     </div>
   );
