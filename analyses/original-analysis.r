@@ -5,6 +5,7 @@ library(car)
 library(emmeans)
 library(interactions)
 library(lme4)
+library(jsonlite)
 
 prolificInfo_coodination <- read_csv("../data/pipeline/prolific_export_duo.csv") %>%
   mutate(condition = "coordination")
@@ -24,6 +25,14 @@ control_med_completion_time = median((prolificInfo %>% filter(condition == "cont
 
 players_to_analyze <- (read_csv("../data/pipeline/player.csv") %>%
   filter(participantIdentifier %in% workers_to_analyze))$id
+
+player_empirica_metadata <- read_csv("../data/pipeline/player.csv") %>%
+  filter(id %in% players_to_analyze) %>%
+  filter(!is.na(exitSurvey))
+
+surveydata <- player_empirica_metadata$exitSurvey %>%
+  lapply(fromJSON) %>%
+  bind_rows()
   
 cgdata <- read_csv("../data/pipeline/playerRound.csv") %>%
   filter(playerID %in% players_to_analyze)
