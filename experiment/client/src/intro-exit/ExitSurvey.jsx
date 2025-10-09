@@ -31,6 +31,7 @@ export function ExitSurvey({ next }) {
       fair,
       feedback,
       education,
+      legaltraining,
     });
     next();
   }
