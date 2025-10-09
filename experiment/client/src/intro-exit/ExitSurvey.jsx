@@ -165,14 +165,14 @@ export function ExitSurvey({ next }) {
                     selected={education}
                     name="education"
                     value="high-school"
-                    label="High School"
+                    label="Secondary school / high school"
                     onChange={handleEducationChange}
                   />
                   <Radio
                     selected={education}
                     name="education"
                     value="bachelor"
-                    label="US Bachelor's Degree"
+                    label="Undergraduate degree"
                     onChange={handleEducationChange}
                   />
                   <Radio
