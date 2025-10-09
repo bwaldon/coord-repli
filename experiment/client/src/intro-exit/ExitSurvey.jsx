@@ -17,6 +17,7 @@ export function ExitSurvey({ next }) {
   const [fair, setFair] = useState("");
   const [feedback, setFeedback] = useState("");
   const [education, setEducation] = useState("");
+  const [legaltraining, setLegaltraining] = useState("");
 
   const bonus = player.get("bonus", 0);
   const bonusNumber = parseInt(String(bonus ?? 0));
@@ -32,6 +33,10 @@ export function ExitSurvey({ next }) {
       education,
     });
     next();
+  }
+
+  function handleLegalTrainingChange(e) {
+    setLegaltraining(e.target.value);
   }
 
   function handleEducationChange(e) {
@@ -112,6 +117,42 @@ export function ExitSurvey({ next }) {
                       onChange={(e) => setGender(e.target.value)}
                     />
                   </div>
+                </div>
+              </div>
+
+              <div>
+                <label className={labelClassName}>
+                  What best describes your legal background?
+                </label>
+                <div className="grid gap-2">
+                  <Radio
+                    selected={legaltraining}
+                    name="legaltraining"
+                    value="0"
+                    label="No formal legal training or law school"
+                    onChange={handleLegalTrainingChange}
+                  />
+                  <Radio
+                    selected={legaltraining}
+                    name="legaltraining"
+                    value="1"
+                    label="Some formal legal training and/or law school"
+                    onChange={handleLegalTrainingChange}
+                  />
+                  <Radio
+                    selected={legaltraining}
+                    name="legaltraining"
+                    value="2"
+                    label="Professional legal degree (such as a JD or LLM)"
+                    onChange={handleLegalTrainingChange}
+                  />
+                  <Radio
+                    selected={legaltraining}
+                    name="legaltraining"
+                    value="3"
+                    label="Practicing lawyer"
+                    onChange={handleLegalTrainingChange}
+                  />
                 </div>
               </div>
 
