@@ -6,8 +6,11 @@ Empirica.onGameStart(({ game }) => {
 
   // Load the stimuli from the JSON file
   const stims = require("./stims.json");
+  // If 'block' is set to 'random': sample block randomly between 1 and 8; otherwise, pass from treatment settings
+  const blockTreatmentParam = game.get("treatment").block;
+  const block = blockTreatmentParam === "random" ? _.sample([1, 2, 3, 4, 5, 6, 7, 8]) : blockTreatmentParam;
   // Filter the stimuli based on the block number
-  const filteredStims = stims.filter(stim => stim.block === game.get("treatment").block);
+  const filteredStims = stims.filter(stim => stim.block === block);
   // Shuffle the filtered stimuli
   const shuffledStims = _.shuffle(filteredStims);
 
